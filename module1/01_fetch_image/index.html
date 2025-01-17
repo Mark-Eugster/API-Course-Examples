@@ -4,15 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Coding Train: Data/APIs 1</title>
+    <title>Beagle Dog</title>
   </head>
   <body>
     <h1>Fetch a Rainbow</h1>
     <img src="" id="rainbow" width="480" />
+    <img src="" id="mountain" width="480" />
     <script>
-      console.log('about to fetch a rainbow');
+      console.log('about to fetch a rainbow and mountain');
 
-      catchRainbow()
+      catchRainbow('rainbow.jpg', 'rainbow')
         .then(response => {
           console.log('yay');
         })
@@ -21,11 +22,15 @@
           console.error(error);
         });
 
-      async function catchRainbow() {
-        const response = await fetch('rainbow.jpg');
+        catchRainbow('mountain.png', 'mountain')
+
+      async function catchRainbow(fname, sname) {
+        const response = await fetch(fname);
         const blob = await response.blob();
-        document.getElementById('rainbow').src = URL.createObjectURL(blob);
+        document.getElementById(sname).src = URL.createObjectURL(blob);
       }
+
+      
     </script>
   </body>
 </html>
